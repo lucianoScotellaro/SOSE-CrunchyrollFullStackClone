@@ -1,21 +1,39 @@
-# Project Specification
+# Crunchyroll Full-Stack Clone
+
+## Introduction
+
+Crunchyroll Full-Stack Clone is an application developed as end-of-course project for the course of **Service-Oriented Software Engineering**.
+
+Since the domain and the purpose of the application were arbitrary, the idea was to experiment with an over-the-top video on-demand system, leveraging a content-delivery network for better performance.
+
+Below are reported:
+
+- The [requirements](#requirements) of the project
+- The [setup](#setup) needed to locally run the application
+- The [main features](#systems-main-features) of the system
 
 ## Requirements
 
 ### Functional
 
-Application's domain and purpose are arbitrary.
+Given the chosen domain and purpose, the project should comply with the following functional requirements.
 
-#### CDN? FEM?
+_Note: all the functional requirements are expressed as user stories._
 
-Netflix full-stack clone is suitable in terms of requirements, but maybe a little bit too big?
+#### User
 
-I guess a good start could be a small CDN with:
+- As a user i want to **register**, **login** and **subscribe** to the platform so that i can access its functionalities
+- As a user i want to **browse** the application **catalog** so that i can search for a video to watch
+- As a user i want to **play** videos so that
+- As a user i want to **pause**, **rollback** and **fast-forward** videos so that i
 
-- User registration, login and subscription
-- Content delivery leveraging geographical proximity and edge caching strategies
+#### Manager
+
+- As a manager i want to upload videos to the platform so that users can play them
 
 ### Non-Functional
+
+The following non-functional requirements are extracted from the [assignment's description](./assignment.pdf).
 
 #### Components
 
@@ -63,9 +81,17 @@ Additionally, source code and services should be properly described using respec
 
 Finally, a **README** file should be provided to explain all the steps to be followed to **setup** the application.
 
-## Notes
+#### Notes
 
 Particular attention has to be paid in applying correctly:
 
 - **SOA Engineering Principles**
 - **SOA Best Practices**
+
+#### Additional
+
+- Content should be delivered using multiple servers, leveraging geographical proximity and edge caching strategies
+
+## Setup
+
+## System's Main Features
