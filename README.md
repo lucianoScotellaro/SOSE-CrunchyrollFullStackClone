@@ -8,9 +8,9 @@ Since the domain and the purpose of the application were arbitrary, the idea was
 
 Below are reported:
 
-- The [requirements](#requirements) of the project
-- The [setup](#setup) needed to locally run the application
-- The [main features](#systems-main-features) of the system
+- Project's [requirements](#requirements)
+- Project's [setup](#setup) to locally run the application
+- Project's [main features](#systems-main-features)
 
 ## Requirements
 
@@ -22,14 +22,15 @@ _Note: all the functional requirements are expressed as user stories._
 
 #### User
 
-- As a user i want to **register**, **login** and **subscribe** to the platform so that i can access its functionalities
-- As a user i want to **browse** the application **catalog** so that i can search for a video to watch
-- As a user i want to **play** videos so that
-- As a user i want to **pause**, **rollback** and **fast-forward** videos so that i
+- As a user I want to **register**, **login** and **subscribe** to the platform so that I can access its functionalities
+- As a user I want to **browse** application's **catalog** so that I can search for video content to watch
+- As a user I want to **play** video content so that I can watch it
+- As a user I want to **pause**, **rollback** and **fast-forward** videos so that I freely move through the video content
 
 #### Manager
 
-- As a manager i want to upload videos to the platform so that users can play them
+- As a manager I want to upload video content to the platform so that it is accessible to users
+- As a manager I want to remove video content from the platform so that it is no more accessible to users
 
 ### Non-Functional
 
@@ -81,16 +82,20 @@ Additionally, source code and services should be properly described using respec
 
 Finally, a **README** file should be provided to explain all the steps to be followed to **setup** the application.
 
-#### Notes
+#### Note
 
 Particular attention has to be paid in applying correctly:
 
 - **SOA Engineering Principles**
 - **SOA Best Practices**
 
-#### Additional
+<p style="color:red;">Aggiungi descrizione di quali sono i SOA Principles le Best Practices</p>
 
-- Content should be delivered using multiple servers, leveraging geographical proximity and edge caching strategies
+#### Domain-specific Requirements
+
+Below are reported all the non-functional requirements that have been added based on the specific application-domain.
+
+- Content should be delivered using multiple servers, leveraging geographical proximity and edge caching strategies, to improve delivery performance
 
 ## Setup
 
