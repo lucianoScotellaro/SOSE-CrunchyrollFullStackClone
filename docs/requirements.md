@@ -54,12 +54,7 @@ Finally, a **README** file should be provided to explain all the steps to be fol
 
 ### Note
 
-Particular attention has to be paid to correctly applying:
-
-- **SOA Engineering Principles**
-- **SOA Best Practices**
-
-<p style="color:red;">Aggiungi descrizione di quali sono i SOA Principles e le Best Practices</p>
+Particular attention has to be paid to correctly applying **SOA** **engineering principles**, such as _composition_, _independency_ and _reuse_, and OA **best practices** and **standards**.
 
 ## Domain-Specific Requirements
 
@@ -79,10 +74,10 @@ Particular attention has to be paid to correctly applying:
 
 ### Non-Functional
 
-- **Security**: The system should only provide **manager access** to **authorized personnel**, to ensure that video content is uploaded exclusively by them. In addition, it has to **store** and **deliver** video content **securely**, to guarantee adequate protection against data breaches and data sniffing attacks.
-- **Performance**: The system should provide **low-latency** video content browsing and **delivery**, offering the user a real-time experience.
-- **Scalability**: The system should be able to scale, both **horizontally** and **vertically**, to accommodate increasing numbers of users and video contents.
-- **Availability**: The system should provide **zero-downtime** **failure** management and **updates**, to ensure that it is always available.
-- **Reliability**: The system should {testing}, {observability => logs}
-- **Maintainability**: The system should be easily updatable, both in terms of features and technologies, {componenti indipendenti e modulari in modo da poter essere aggiornati, sostituiti e aggiunti all'occorrenza}.
+- **Security**: The system should only provide **manager access** to **authorized personnel**, to ensure that video content is uploaded and removed exclusively by them. In addition, it has to **store** and **deliver** video content **securely**, to guarantee adequate protection against data breaches and data sniffing attacks.
+- **Performance**: The system should provide **low-latency** video content **browsing** and **delivery**, offering the user a real-time experience.
+- **Scalability**: The system should be able to scale both **horizontally** and **vertically**, to provide the possibility of accommodating increasing amounts of users and video content.
+- **Availability**: The system should provide **zero-downtime** **failure** management and **updates**, to ensure maximum availability.
+- **Reliability**: The system should always fully **complain** to a well documented **expected behavior**, and should provide proper **observability** for an easy fault detection and removal.
+- **Maintainability**: The system should be easily updatable. So it should provide easy implementation of additional **features**, and easy renewal of the **technologies** in use.
 - **Usability**: The system should provide a **simple** and clear user interface, along with a **intuitive** and smooth **user experience**, to offer easy browsing and playback of video content.
