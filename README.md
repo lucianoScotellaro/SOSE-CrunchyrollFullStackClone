@@ -13,7 +13,7 @@ Below are reported:
 - Project's [setup](#setup), to locally run the application
 - Project's [main features](#systems-main-features)
 
-A deeper look into system's [requirements](./docs/requirements.md), [structure](./docs/diagrams/system%20structure/) and [behavior](./docs/diagrams/system%20behavior/) is provided through the [docs](./docs/) folder, while a discussion of all the [implementation details](./services/README.md) is available in the [services](./services/) folder.
+A deeper look into system's [**requirements**](./docs/requirements.md) and [**architecture**](./docs/system-architecture/) is provided through the [**docs**](./docs/) folder, while a discussion of all the **implementation details** is available in the [**services**](./services/) folder.
 
 ## Setup
 
