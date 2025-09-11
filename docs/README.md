@@ -4,7 +4,7 @@
 
 ### Structure: Subsystems and Components
 
-![subsystem-view](./system-architecture/static-description/subsystem-view.png){style="display: block; margin: 0 auto" }
+![subsystem-view](./system-architecture/static-description/subsystem-view.png)
 
 ### Users Interactions: Use-Case Diagram
 
