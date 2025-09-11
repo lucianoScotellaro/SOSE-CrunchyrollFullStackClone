@@ -4,7 +4,9 @@
 
 ### Structure: Subsystems and Components
 
-### Interactions: Use-Case Diagram
+![subsystem-view](./system-architecture/static-description/subsystem-view.png){style="display: block; margin: 0 auto" }
+
+### Users Interactions: Use-Case Diagram
 
 ## Dynamic Description
 
