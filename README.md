@@ -18,3 +18,18 @@ A deeper look into system's [**requirements**](./docs/requirements.md) and [**ar
 ## Setup
 
 ## System's Main Features
+
+### Components Independence
+
+Provided:
+
+- On the architectural level by building the system as composition of black box components, publishing required and provided interfaces.
+- On the implementation level by the use of containerization and publish-subscribe
+
+This ensures great extensibility and maintainability.
+
+Essendo questo il progetto finale per un corso di service-oriented software engineering non si può non nominare come prima caratteristica fondamentale del sistema la costruzione di quest'ultimo come composizione di servizi indipendenti e distribuiti.
+
+### Components Standardization
+
+By the use of a Maven Archetype, it provides all the developers with the same project structure, providing higher readability and easier management for the project codebase.
