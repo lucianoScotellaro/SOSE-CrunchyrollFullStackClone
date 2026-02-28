@@ -78,6 +78,6 @@ Particular attention has to be paid to correctly applying **SOA** **engineering 
 - **Performance**: The system should provide **low-latency** video content **browsing** and **delivery**, offering the user a real-time experience.
 - **Scalability**: The system should be able to scale both **horizontally** and **vertically**, to provide the possibility of accommodating increasing amounts of users and video content.
 - **Availability**: The system should provide **zero-downtime** **failure** management and **updates**, to ensure maximum availability.
-- **Reliability**: The system should always fully **complain** to a well documented **expected behavior**, and should provide proper **observability** for an easy fault detection and removal.
+- **Reliability**: The system should always fully **complain** to a well documented **expected behavior**, and should provide proper **observability** for easy fault detection and removal.
 - **Maintainability**: The system should be easily updatable. So it should provide easy implementation of additional **features**, and easy renewal of the **technologies** in use.
 - **Usability**: The system should provide a **simple** and clear user interface, along with a **intuitive** and smooth **user experience**, to offer easy browsing and playback of video content.
