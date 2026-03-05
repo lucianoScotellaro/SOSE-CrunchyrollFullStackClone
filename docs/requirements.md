@@ -69,8 +69,8 @@ Particular attention has to be paid to correctly applying **SOA** **engineering 
 
 #### Admin
 
-- **US5**: As an admin I want to **upload** video content to the platform so that it is accessible to users.
-- **US6**: As an admin I want to **remove** video content from the platform so that it is no more accessible to users.
+- **AS1**: As an admin I want to **upload** video content to the platform so that it is accessible to users.
+- **AS2**: As an admin I want to **remove** video content from the platform so that it is no more accessible to users.
 
 ### Non-Functional
 
