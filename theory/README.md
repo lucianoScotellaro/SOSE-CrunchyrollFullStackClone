@@ -35,7 +35,24 @@ _N.B. Since the problem that these systems are trying to solve is mainly a laten
 
 ## Functioning: how do streaming systems work
 
-### Anatomy: what are the components of streaming systems
+### Anatomy: core components of streaming systems
+
+As mentioned before, a streaming system is a system whose **purpose** is to **incrementally** **produce**, **transmit**, and **consume** a **data stream**. For this reason the **anatomy** of a generic streaming system is composed by **three** main **classes** of **components**:
+
+1. **Producer**: incrementally produces the data stream.
+2. **Broker**: incrementally transmits the data stream.
+3. **Consumer**: incrementally consumes the data stream.
+
+These **classes** are **logical representations**, and are then **instantiated** as **components** with more **specific characteristics** **based** on the **system** needs.
+
+**Communication** instead is **mainly** implemented in **two ways**, **based** on the existing **relationship** between **data stream** and **consumers**:
+
+1. **Publish-Subscribe**: in cases where the existence of the data stream is independent from consumers'requests (e.g. monitoring).
+2. **Client-Server**: in cases where the existence of the data stream is dependent from consumers'requests (e.g. streaming on-demand).
+
+It is also worth mentioning that the **broker** is **not always present** as a **stand-alone** component since there exist many streaming cases in which a distribution network and/or a layer of decoupling are not needed (e.g. point-to-point streaming).
+
+#### Core components of over-the-top video on-demand streaming systems
 
 ### How does an over-the-top video on-demand streaming system work
 
