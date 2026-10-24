@@ -68,14 +68,14 @@ The **communication** between these three components is implemented, based on th
 
 Clearly an **over-the-top video on-demand streaming system** is **not** **solely** composed by the **elements** that are necessary to video **streaming**. It also consists of components that handle users, catalog, monitoring, optimization, and payments. However, the discussion of these components is secondary in describing specifically the functioning of streaming, and will therefore be carried out at a later moment.
 
-##### Origin Server
+### Origin Server
 
-##### Content Delivery Network (spiegazione content delivery networks)
+### Content Delivery Network (spiegazione content delivery networks)
 
-###### Domain Name System
+#### Domain Name System
 
-##### Client
+### Client
 
-#### Completing components of over-the-top video on-demand streaming systems
+### Completing components of over-the-top video on-demand streaming systems
 
 ## Implementation (spiegazione implementazione)
