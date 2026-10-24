@@ -54,27 +54,28 @@ It is also worth mentioning that the **broker** is **not always present** as a *
 
 #### Core components of over-the-top video on-demand streaming systems
 
-### How does an over-the-top video on-demand streaming system work
+Based on the anatomy of a generic streaming system discussed above, let's introduce the specific anatomy of an over-the-top video on-demand streaming system, bearing in mind that the **goal** of such a system is to **generate**, **transmit**, and **consume** a **multimedia data stream**, so that users can access video content upon request with low latency.
 
-### Need for speed (spiegazione sistemi di streaming in generale hanno bisogno di velocità)
-Performance => Content Delivery Networks to lower latency
+Given this premise, the **logical components** described before are **instantiated** into **concrete components** with additional and more **specific** characteristics, designed expressly for the purpose of **over-the-top video on-demand streaming**.
 
-Being streaming systems, one of the most important requirements for over-the-top video on-demand systems is the ability to deliver content very fast (in real time(?)).
+Over-the-top video on-demand streaming systems will therefore consist of three main concrete components:
 
-This need for very low latencies between content provider and client is typically handled using networks of distributed servers that can rapidly deliver in any point of a given area. These networks are called content delivery networks and are the backbone of any streaming system.
+1. **Origin Server**: server that stores and emits, upon request, all the multimedia data of the system, working as **storage** and **producer**.
+2. **Content-Delivery Network**: network of distributed servers that allows the data stream transmission over long distances with low latencies and the distribution of requests among different servers, working as **broker** and **load-balancer**.
+3. **Client**: client application that allows to request and playback the data stream, working as **interface** and **consumer**.
 
-## How does an over-the-top video on-demand streaming system is built (spiegazione implementazione)
+The **communication** between these three components is implemented, based on the distinction discussed above, as **client-server**, since the **data stream** has to be emitted **only** **upon** consumers'**requests**.
 
-### Content Delivery Networks (spiegazione content delivery networks)
+Clearly an **over-the-top video on-demand streaming system** is **not** **solely** composed by the **elements** that are necessary to video **streaming**. It also consists of components that handle users, catalog, monitoring, optimization, and payments. However, the discussion of these components is secondary in describing specifically the functioning of streaming, and will therefore be carried out at a later moment.
 
-#### What are Content Delivery Networks
+##### Origin Server
 
-#### How do Content Delivery Networks work
+##### Content Delivery Network (spiegazione content delivery networks)
 
-Mapping clients to edge servers through DNS resolution
+###### Domain Name System
 
-### Domain Name System
+##### Client
 
-#### What is the Domain Name System
+#### Completing components of over-the-top video on-demand streaming systems
 
-#### How does Domain Name System work
+## Implementation (spiegazione implementazione)
