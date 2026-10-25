@@ -68,7 +68,27 @@ The **communication** between these three components is implemented, based on th
 
 Clearly an **over-the-top video on-demand streaming system** is **not** **solely** composed by the **elements** that are necessary to video **streaming**. It also consists of components that handle users, catalog, monitoring, optimization, and payments. However, the discussion of these components is secondary in describing specifically the functioning of streaming, and will therefore be carried out at a later moment.
 
+For **now**, with the concrete components introduced, we first want to **define** the **domain-specific functionalities** that each one has to implement, to have **clear in mind** **what** they **have to do**. Then we want to **describe** in detail **how** each of these functionalities is **implemented**. Only in the end we will discuss the additional components that are not strictly related to streaming.
+
 ### Origin Server
+
+As previously mentioned, in an over-the-top video on-demand streaming system the **origin server** works as **storage** for all multimedia data, and as **producer** of all the requested data streams. **Therefore** the **domain-specific functionalities** that this component has to support in addition to its responsibilities as a producer are the following:
+
+1. **Capability** to **store multimedia data** in **multiple formats** **ready** for the **streaming**: necessary to offer streaming to the users, even with changes in the requested format or quality.
+2. **Capability** to **receive**, **store**, and **prepare** **new multimedia data** for the **streaming**: necessary to allow the system to have an always up-to-date catalog.
+3. **Capability** to **mark** each **content** with a **version identifier**: necessary for the implementation of caching mechanisms.
+4. **Capability** to **serve** **multiple nodes** of the content-delivery network **concurrently**: necessary to handle the volume of users that a streaming system aims to serve.
+
+In **addition** to those functionalities, an origin server **has** also to **support** the following non-functional requirements, required for the system to function properly:
+
+1. **Performance**: needed in multimedia data access and transmission to provide a low-latency service.
+2. **Scalability**: needed in multimedia data storage, given the enormous quantity of data that the system has to store, due to the necessity to store each content in multiple formats.
+3. **Security**: needed in multimedia data access and transmission to ensure that these are only available to the system infrastructure.
+4. **Redundancy**: needed to ensure system availability and to prevent multimedia data loss.
+
+The **implementation** of domain-specific functionalities and non-functional requirements, along with the incremental production of data streams inherent to the role of producer that this component plays, is discussed functionality by functionality in the **following sections**. 
+
+#### Storing multimedia data in multiple formats ready for the streaming
 
 ### Content Delivery Network (spiegazione content delivery networks)
 
