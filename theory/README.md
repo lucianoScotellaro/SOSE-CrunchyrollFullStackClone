@@ -54,28 +54,40 @@ It is also worth mentioning that the **broker** is **not always present** as a *
 
 #### Core components of over-the-top video on-demand streaming systems
 
-Based on the anatomy of a generic streaming system discussed above, let's introduce the specific anatomy of an over-the-top video on-demand streaming system, bearing in mind that the **goal** of such a system is to **generate**, **transmit**, and **consume** a **multimedia data stream**, so that users can access video content upon request with low latency.
+Based on the anatomy of a generic streaming system discussed above, let's **introduce** the **specific anatomy** of an **over-the-top video on-demand streaming system**, bearing in mind that the **goal** of such a system is to **ingest**, **transmit**, and **consume** a **multimedia data stream**, so that users can access video content upon request with low latency.
 
 Given this premise, the **logical components** described before are **instantiated** into **concrete components** with additional and more **specific** characteristics, designed expressly for the purpose of **over-the-top video on-demand streaming**.
 
-Over-the-top video on-demand streaming systems will therefore consist of three main concrete components:
+Over-the-top video on-demand streaming systems will therefore consist of **three main concrete components**:
 
 1. **Origin Server**: server that stores and emits, upon request, all the multimedia data of the system, working as **storage** and **producer**.
-2. **Content-Delivery Network**: network of distributed servers that allows the data stream transmission over long distances with low latencies and the distribution of requests among different servers, working as **broker** and **load-balancer**.
+2. **Content-Delivery Network**: network of distributed servers that allows the data stream transmission over long distances with low latencies, the distribution of requests among different servers, and the caching of content on the edge servers, working as **broker**, **load-balancer**, and **cache**.
 3. **Client**: client application that allows to request and playback the data stream, working as **interface** and **consumer**.
 
-The **communication** between these three components is implemented, based on the distinction discussed above, as **client-server**, since the **data stream** has to be emitted **only** **upon** consumers'**requests**.
+The **communication** between these three components is implemented, based on the distinction discussed above, as **client-server**, since the **data stream** has to be emitted **only** when a **consumer** makes a **request**.
+
+With respect to other streaming domains, in which produced data can be directly streamed to the broker (e.g. monitoring), in the **video-streaming domain** we have to deal with **data** that **need** to **be prepared** before they can be served in streaming. The **ultra-high-quality video files** (masters) that systems in this domain have to handle are not suitable for streaming as they are. This is due to three main reasons:
+
+1. **Extremely high bitrate**, that raises the streaming bandwidth needed to impractical levels.
+2. Web players **not supported format**: that prevents the possibility to play those files using browsers.
+3. Single **monolithic file**: that hinders the incremental transmission needed to produce the data stream, and prevents the usage of adaptive bitrate.
+
+This raises the **need** to have a set of **pre-processing components** in addition to three main components discussed above. We will **refer** to this set of pre-processing components **as** **ingestion pipeline**.
+
+_N.B. The separation between the ingestion pipeline and the origin server is important from a logical perspective, since the origin server is only meant to store data and emit streams, but it is maybe more important from a practical perspective, since it divides the workloads preventing an overload on the origin server._
 
 Clearly an **over-the-top video on-demand streaming system** is **not** **solely** composed by the **elements** that are necessary to video **streaming**. It also consists of components that handle users, catalog, monitoring, optimization, and payments. However, the discussion of these components is secondary in describing specifically the functioning of streaming, and will therefore be carried out at a later moment.
 
 For **now**, with the concrete components introduced, we first want to **define** the **domain-specific functionalities** that each one has to implement, to have **clear in mind** **what** they **have to do**. Then we want to **describe** in detail **how** each of these functionalities is **implemented**. Only in the end we will discuss the additional components that are not strictly related to streaming.
+
+### Ingestion Pipeline
 
 ### Origin Server
 
 As previously mentioned, in an over-the-top video on-demand streaming system the **origin server** works as **storage** for all multimedia data, and as **producer** of all the requested data streams. **Therefore** the **domain-specific functionalities** that this component has to support in addition to its responsibilities as a producer are the following:
 
 1. **Capability** to **store multimedia data** in **multiple formats** **ready** for the **streaming**: necessary to offer streaming to the users, even with changes in the requested format or quality.
-2. **Capability** to **receive**, **store**, and **prepare** **new multimedia data** for the **streaming**: necessary to allow the system to have an always up-to-date catalog.
+2. **Capability** to **receive** and **store** **new multimedia data** for the **streaming**: necessary to allow the system to have an always up-to-date catalog.
 3. **Capability** to **mark** each **content** with a **version identifier**: necessary for the implementation of caching mechanisms.
 4. **Capability** to **serve** **multiple nodes** of the content-delivery network **concurrently**: necessary to handle the volume of users that a streaming system aims to serve.
 
@@ -89,6 +101,8 @@ In **addition** to those functionalities, an origin server **has** also to **sup
 The **implementation** of domain-specific functionalities and non-functional requirements, along with the incremental production of data streams inherent to the role of producer that this component plays, is discussed functionality by functionality in the **following sections**. 
 
 #### Storing multimedia data in multiple formats ready for the streaming
+
+
 
 ### Content Delivery Network (spiegazione content delivery networks)
 
