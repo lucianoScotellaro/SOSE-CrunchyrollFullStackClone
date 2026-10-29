@@ -82,6 +82,32 @@ For **now**, with the concrete components introduced, we first want to **define*
 
 ### Ingestion Pipeline
 
+As just mentioned, in **over-the-top video on-demand streaming systems** **incoming data** **need** to be processed to be suitable for streaming. The operations that make masters ready for streaming are handled by a set of **pre-processing** components, that we called **ingestion pipeline**.
+
+#### Functional requirements
+
+In order to **make** the incoming multimedia **data** **available in streaming**, this pipeline has to support and perform **eight** different **operations**, that have **four** main **goals**.
+
+1. **Compress masters** to lower bitrate versions that can be served via streaming.
+2. **Encode** content in **multiple formats** and **bitrates** to allow playback on different players and to adjust the bitrate to the available bandwidth.
+3. **Split** single **monolithic files** into **singularly retrievable segments** to enable incremental transmission, jumping at any point, and quality-switching at the end of any segment.
+4. **Encrypt contents** to guarantee security during transport and consumption.
+
+The eight operations the ingestion pipeline must support and perform, that allow the preparation of contents to their streaming distribution are the following:
+
+1. **Ingestion**: it has to be able to receive ultra-high-quality masters using an upload system that supports extremely large files.
+2. **Validation**: it has to be able to verify files integrity and to validate format and metadata, to immediately reject any corrupted file or non-compliant requests.
+3. **Transcoding**: it has to be able to recode contents into multiple versions with increasing bitrate, each in different formats compatible with the different web players.
+4. **Segmentation**: it has to be able to split all the versions produced during transcoding into singularly retrievable segments of 2-10 seconds.
+5. **Packaging**: it has to be able to package all the segments into containers compatible with the different streaming protocols.
+6. **Encryption**: it has to be able to encrypt all the segments and enable the mechanism to request the keys.
+7. **Manifest generation**: it has to be able to generate a document for each content describing available versions, segments' location, available audio and subtitles tracks, and their location, to allow clients to know the available versions for each content and the information needed to retrieve them.
+8. **Writing**: it has to be able to communicate with the storage (the origin server) to write segments, metadata, version identifiers, and manifests, writing the manifest as last element so to make available to the clients only contents for which the writing process was successful.
+
+#### Implementation
+
+All these functional requirements are implemented in the ingestion pipeline using typically the following components, each handling one or more of the just described operations.
+
 ### Origin Server
 
 As previously mentioned, in an over-the-top video on-demand streaming system the **origin server** works as **storage** for all multimedia data, and as **producer** of all the requested data streams. **Therefore** the **domain-specific functionalities** that this component has to support in addition to its responsibilities as a producer are the following:
@@ -101,8 +127,6 @@ In **addition** to those functionalities, an origin server **has** also to **sup
 The **implementation** of domain-specific functionalities and non-functional requirements, along with the incremental production of data streams inherent to the role of producer that this component plays, is discussed functionality by functionality in the **following sections**. 
 
 #### Storing multimedia data in multiple formats ready for the streaming
-
-
 
 ### Content Delivery Network (spiegazione content delivery networks)
 
