@@ -93,7 +93,7 @@ In order to **make** the incoming multimedia **data** **available in streaming**
 3. **Split** single **monolithic files** into **singularly retrievable segments** to enable incremental transmission, jumping at any point, and quality-switching at the end of any segment.
 4. **Encrypt contents** to guarantee security during transport and consumption.
 
-The eight operations the ingestion pipeline must support and perform, that allow the preparation of contents to their streaming distribution are the following:
+These eight operations needed by the ingestion pipeline to prepare masters to their streaming distribution are the following.
 
 1. **Ingestion**: it has to be able to receive ultra-high-quality masters using an upload system that supports extremely large files.
 2. **Validation**: it has to be able to verify files integrity and to validate format and metadata, to immediately reject any corrupted file or non-compliant requests.
@@ -104,9 +104,46 @@ The eight operations the ingestion pipeline must support and perform, that allow
 7. **Manifest generation**: it has to be able to generate a document for each content describing available versions, segments' location, available audio and subtitles tracks, and their location, to allow clients to know the available versions for each content and the information needed to retrieve them.
 8. **Writing**: it has to be able to communicate with the storage (the origin server) to write segments, metadata, version identifiers, and manifests, writing the manifest as last element so to make available to the clients only contents for which the writing process was successful.
 
-#### Implementation
+#### Architecture
 
-All these functional requirements are implemented in the ingestion pipeline using typically the following components, each handling one or more of the just described operations.
+All these **functional requirements** are **implemented** in the ingestion pipeline using **four** main **classes** of **components**:
+
+1. **Receivers**: responsible for receiving content upload requests, authenticating those requests, and granting writing permissions.
+2. **Validators**: responsible for the verification of masters integrity and compliance of format and metadata.
+3. **Transformers**: responsible for the transformation operations, from transcoding to encryption and manifest generation.
+4. **Writers**: responsible for the writing of segments and manifests on the origin server.
+
+These **classes** of components are not used to instantiate higher level units that handle the whole preparation process, instead they are treated as **four** completely different and **independent** **layers**. This provides the pipeline with **better scalability**, allowing only the specific components that need it to be scaled, and more **efficient jobs handling**, avoiding having allocated resources stuck doing nothing due to variations in the weight of the jobs.
+
+<img src="./img/ingestion-pipeline/architectures-comparison.png"/>
+
+The **coordination** of these four **layers** is **implemented** using an **orchestrator** of **ephemeral containers**. This allows, thanks to the orchestrator engine, to **automatically handle** **operations sequencing**, **components instantiation and deletion**, and **state tracking** for each job, providing the system with **intrinsic scalability**, **efficient resource allocation**, and **jobs state monitoring**.
+
+Since the **receiver** has to be **always reachable**, it is the only component that is not handled by the orchestrator, and is instead **implemented** as a **permanent component**.
+
+As for **communication**, the data transmission among the different layers is granted using an **object storage** as **staging**, due to the heaviness of the files being transferred.
+
+An image showing the complete architecture is reported below, matching each component with its implementing technologies.
+
+<img src="./img/ingestion-pipeline/ingestion-pipeline.jpg"/>
+
+It is worth noting that this type of **architecture** for the ingestion pipeline **supports** both **horizontal** and **vertical** **scalability**, providing the system with both the possibility to **reduce** the **preparation time** for a single content and the possibility to **increase** the number of **contents** being **prepared** **concurrently**.
+
+#### Step-by-step functioning
+
+Given the architectural description provided above, the step-by-step functioning of the ingestion pipeline is as follows.
+
+1. The Admin Client reaches the Receiver to upload new content.
+2. The Receiver authenticates the Admin Client, grants it the writing permission for a path on the staging storage, and returns it a job ID to query the job state.
+3. The Admin Client reaches the Staging Storage and starts the content upload.
+4. When the upload is completed the Staging Storage notifies the Workflow Orchestrator that a new master is available.
+5. The Workflow Orchestrator creates a Validator that reads the master from Staging Storage and checks for integrity and compliance.
+6. If the validation is successful the Validator terminates and the Workflow Orchestrator creates a Transformer.
+7. The Transformer proceeds to read the master from the Staging Storage, and process it to concurrently produce a set of different segmented, packaged and encrypted renditions.
+8. When the transformation operations are completed the Transformer generates the manifest, writes all the results in the Staging Storage, and terminates.
+9. The Workflow Orchestrator creates a Writer that reads the Staging Storage for the Transformer results, and writes the segments and the manifest in the Origin Server.
+
+#### Implementation
 
 ### Origin Server
 
