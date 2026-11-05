@@ -115,7 +115,7 @@ All these **functional requirements** are **implemented** in the ingestion pipel
 
 These **classes** of components are not used to instantiate higher level units that handle the whole preparation process, instead they are treated as **four** completely different and **independent** **layers**. This provides the pipeline with **better scalability**, allowing only the specific components that need it to be scaled, and more **efficient jobs handling**, avoiding having allocated resources stuck doing nothing due to variations in the weight of the jobs.
 
-<img src="./img/ingestion-pipeline/architectures-comparison.png"/>
+![ingestion-pipeline-architectures-comparison](./img/ingestion-pipeline/architectures-comparison.png)
 
 The **coordination** of these four **layers** is **implemented** using an **orchestrator** of **ephemeral containers**. This allows, thanks to the orchestrator engine, to **automatically handle** **operations sequencing**, **components instantiation and deletion**, and **state tracking** for each job, providing the system with **intrinsic scalability**, **efficient resource allocation**, and **jobs state monitoring**.
 
@@ -125,7 +125,7 @@ As for **communication**, the data transmission among the different layers is gr
 
 An image showing the complete architecture is reported below, matching each component with its implementing technologies.
 
-<img src="./img/ingestion-pipeline/ingestion-pipeline.jpg"/>
+![ingestion-pipeline-architecture-overview](./img/ingestion-pipeline/ingestion-pipeline.jpg)
 
 It is worth noting that this type of **architecture** for the ingestion pipeline **supports** both **horizontal** and **vertical** **scalability**, providing the system with both the possibility to **reduce** the **preparation time** for a single content and the possibility to **increase** the number of **contents** being **prepared** **concurrently**.
 
