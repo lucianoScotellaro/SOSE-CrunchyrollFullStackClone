@@ -15,6 +15,10 @@ metadata:
   generateName: ingestion-workflow-
 spec:
   entrypoint: validation-transformation-writing
+  onExit: clear-staging
+  templatesDefault:
+    retryStrategy:
+      limit: 2
   templates:
     - name: validation-transformation-writing
       steps:
@@ -36,3 +40,8 @@ spec:
       container:
         image: writer
         command: [??]
+    - name: clear-staging
+      http:
+        url: {staging-url-to-be-cleared}
+        method: DELETE
+        successCondition: "response.statusCode equals "

@@ -60,18 +60,31 @@ By **applying** the **manifest** to the argo namespace the **Argo Workflows comp
 
 ##### Ingestion workflow definition
 
-As for the definition of the ingestion workflow, it is performed by writing a yaml file containing a set of [argo templates](https://argo-workflows.readthedocs.io/en/latest/workflow-concepts/#workflow-spec). In particular, to implement the ingestion operations, we use four different templates divided as follows:
+As for the definition of the ingestion workflow, it is performed by **writing** a **yaml** file **containing** a set of [**argo templates**](https://argo-workflows.readthedocs.io/en/latest/workflow-concepts/#workflow-spec). In particular, to implement the ingestion operations, we use four different templates divided as follows:
 
-1. Three [template definitions](https://argo-workflows.readthedocs.io/en/latest/workflow-concepts/#template-definitions) to define the operations and the containers to be run.
-2. One [template invocator](https://argo-workflows.readthedocs.io/en/latest/workflow-concepts/#template-invocators) to define the sequencing of such operations.
+1. Three [**template definitions**](https://argo-workflows.readthedocs.io/en/latest/workflow-concepts/#template-definitions) to **define** the **operations** and the containers to be run.
+2. One [**template invocator**](https://argo-workflows.readthedocs.io/en/latest/workflow-concepts/#template-invocators) to **define** the **sequencing** of such operations.
+
+In addition to these templates implementing the ingestion operations, an additional template is defined in the workflow to handle the staging cleanup when the workflow completes, either with success or failure.
 
 The yaml file containing the complete workflow definition is available [here](../../src/streaming-subsystem/ingestion-pipeline/ingestion-workflow.yaml).
 
-_N.B. Note that the operations sequencing is implemented using a steps template that runs validation, transformation, and writing in series._
+_N.B. Note that the operations sequencing is implemented using a steps template that runs validation, transformation, and writing in series. In addition note that each operation has two possible retries since this value is set as template default._
 
 ##### Configuration of automatic startup
 
 The configuration of the automatic workflow startup when a master is uploaded is handled using Argo Events.
+
+##### Testing: workflow orchestrator
+
+Since the testing of the automatic workflow startup when a new master gets uploaded requires the staging storage to be implemented, the testing of this mechanism will be carried out during the discussion of the next component.
+
+For now the testing is limited to controlling that the workflow orchestrator is correctly installed and working. To do this we perform the installation as mentioned above and submit an hello-world workflow to check it runs successfully.
+
+To submit and run the hello-world workflow we proceed as follows:
+
+1. 
+2. 
 
 #### Staging storage
 
