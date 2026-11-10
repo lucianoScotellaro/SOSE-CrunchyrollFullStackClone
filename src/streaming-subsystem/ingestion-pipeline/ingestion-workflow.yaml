@@ -1,0 +1,38 @@
+# Argo Workflow implementing the sequence of operations needed to prepare 
+# a master for streaming.
+
+# The operations sequence to be implemented from the workflow is as follows:
+# 1. Validation of a master uploaded to the staging storage
+# 2. Transformation of the master into multiple streaming-ready renditions
+# 3. Writing of the streaming-ready rendition to the origin server
+
+# Given these operations, corresponding templates are defined.
+# Templates are executed as an ordered sequence of steps.
+
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: ingestion-workflow-
+spec:
+  entrypoint: validation-transformation-writing
+  templates:
+    - name: validation-transformation-writing
+      steps:
+        - - name: validation
+            template: validation
+        - - name: transformation
+            template: transformation
+        - - name: writing
+            template: writing
+    - name: validation
+      container:
+        image: validator
+        command: [??]
+    - name: transformation
+      container:
+        image: transformer
+        command: [??]
+    - name: writing
+      container:
+        image: writer
+        command: [??]
